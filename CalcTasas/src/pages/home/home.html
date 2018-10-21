@@ -1,0 +1,68 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Conversión de tasas de interés</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+  <ion-content>
+    <form [formGroup]="myForm" (ngSubmit)="Calcular()">
+      <ion-list>
+        <ion-item>
+        <div item-start>
+            <img src="assets/imgs/porcentaje.svg" alt="porcentaje" width="30px" height="30px">
+        </div>
+
+          <ion-label stacked>Tasa (%):</ion-label>
+          <ion-input formControlName="txtRate" type="text" placeholder="Tasa"></ion-input>
+        </ion-item>
+        <ion-item>
+            <div item-start>
+                <img src="assets/imgs/calc.svg" alt="porcentaje" width="30px" height="30px">
+            </div>
+          <ion-label stacked>Tipo de tasa:</ion-label>
+          <ion-select formControlName="cmbRateType">
+              <ion-option value="NOMINAL">Nominal</ion-option>
+              <ion-option value="EFECTIVA">Simple (Efectiva)</ion-option>
+            </ion-select>
+        </ion-item>
+        <ion-item>
+            <div item-start>
+                <img src="assets/imgs/period.svg" alt="porcentaje" width="30px" height="30px">
+            </div>
+          <ion-label stacked>Periodicidad de la tasa:</ion-label>
+          <ion-select formControlName="cmbPeriodicity">
+             <ion-option value="12">Mensual</ion-option>
+               <ion-option value="6">Bimensual</ion-option>
+               <ion-option value="4">Trimensual</ion-option>
+               <ion-option value="2">Semestral</ion-option>
+               <ion-option value="1">Anual</ion-option>
+            </ion-select>
+        </ion-item>
+        <ion-item>
+            <div item-start>
+                <img src="assets/imgs/pago.svg" alt="porcentaje" width="30px" height="30px">
+            </div>
+          <ion-label stacked>Forma de pago de los intereses:</ion-label>
+          <ion-select formControlName="cmbPaymentType">
+              <ion-option value="VENCIDA">Vencida</ion-option>
+              <ion-option value="ANTICIPADA">Anticipada</ion-option>
+            </ion-select>
+        </ion-item>
+        
+      </ion-list>
+      <div padding>
+        <button ion-button block type="submit" [disabled]="!myForm.valid">Guardar</button>
+      </div>
+      <div id="showData" class="resultados_calculadora">
+           
+        </div>
+      <button ion-button secondary menuToggle>Ver mas</button>
+    </form>
+  </ion-content>
+
+</ion-content>

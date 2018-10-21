@@ -1,0 +1,7 @@
+{
+  "name": "CalcTasas",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ScreenOrientation } from '@ionic-native/screen-orientation';
 
 @Component({
   selector: 'page-home',
@@ -9,12 +10,21 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class HomePage {
   myForm: FormGroup;
 
-  constructor(public navCtrl: NavController, public formBuilder: FormBuilder) {
+  constructor(public screenOrientation: ScreenOrientation, public navCtrl: NavController, public formBuilder: FormBuilder) {
+    
     this.myForm = this.createMyForm();
   }
 
+  ionViewDidLoad() {
+   
 
+  }
   Calcular() {
+    try {
+      //this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.LANDSCAPE);
+    } catch (error) {
+      console.log(error)
+    }
     let rate = this.myForm.value.txtRate.replace(",", "") / 100;
     let period = this.myForm.value.cmbPeriodicity;
     let lstPeriods = [12, 6, 4, 2, 1];

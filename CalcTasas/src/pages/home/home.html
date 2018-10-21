@@ -3,7 +3,7 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Conversión de tasas de interés</ion-title>
+    <ion-title>Conversión de Tasas</ion-title>
   </ion-navbar>
 </ion-header>
 
@@ -18,7 +18,7 @@
         </div>
 
           <ion-label stacked>Tasa (%):</ion-label>
-          <ion-input formControlName="txtRate" type="text" placeholder="Tasa"></ion-input>
+          <ion-input formControlName="txtRate" type="tel" pattern="[0-9]*" placeholder="Tasa"></ion-input>
         </ion-item>
         <ion-item>
             <div item-start>
@@ -56,12 +56,11 @@
         
       </ion-list>
       <div padding>
-        <button ion-button block type="submit" [disabled]="!myForm.valid">Guardar</button>
+        <button ion-button block type="submit" [disabled]="!myForm.valid">Calcular</button>
       </div>
       <div id="showData" class="resultados_calculadora">
            
         </div>
-      <button ion-button secondary menuToggle>Ver mas</button>
     </form>
   </ion-content>
 

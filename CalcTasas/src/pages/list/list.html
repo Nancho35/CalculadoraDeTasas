@@ -3,21 +3,67 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>List</ion-title>
+    <ion-title>Convertidor de divisas</ion-title>
   </ion-navbar>
 </ion-header>
+<ion-content padding>
 
-<ion-content>
-  <ion-list>
-    <button ion-item *ngFor="let item of items" (click)="itemTapped($event, item)">
-      <ion-icon [name]="item.icon" item-start></ion-icon>
-      {{item.title}}
-      <div class="item-note" item-end>
-        {{item.note}}
+  <ion-content>
+    <form [formGroup]="myGroup" (ngSubmit)="Divisas()">
+      <ion-list>
+        <ion-item>
+          <ion-label stacked>Quiero convertir:</ion-label>
+          <ion-input formControlName="txtDinero" type="tel" pattern="[0-9]*" placeholder="Ingrese Dinero"></ion-input>
+        </ion-item>
+        <ion-item>
+            <div item-start>
+                <img src="assets/imgs/entrada.svg" alt="entrada" width="30px" height="30px">
+            </div>
+          <ion-label stacked>De:</ion-label>
+          <ion-select formControlName="cmbDE">
+              <ion-option value="COP">COP - Peso Colombiano</ion-option>  
+              <ion-option value="USD">USD - Dólar estadounidense</ion-option>
+              <ion-option value="EUR">EUR - Euro</ion-option>
+              <ion-option value="GBP">GBP - Libra esterlina</ion-option>
+              <ion-option value="CAD">USD - Dólar Canadiense </ion-option>
+              <ion-option value="AUD">AUD - Dólar Australiano </ion-option>
+              <ion-option value="ARS">ARS - Peso Argentino </ion-option>
+              <ion-option value="MXN">MXN - Peso Mexicano </ion-option>
+              
+              
+            </ion-select>
+        </ion-item>
+        <ion-item>
+          <div item-start>
+            <img src="assets/imgs/salida.svg" alt="salida" width="30px" height="30px">
+        </div>
+          <ion-label stacked>Para:</ion-label>
+          <ion-select formControlName="cmbPara">
+              <ion-option value="COP">COP - Peso Colombiano</ion-option>  
+              <ion-option value="USD">USD - Dólar estadounidense</ion-option>
+              <ion-option value="EUR">EUR - Euro</ion-option>
+              <ion-option value="GBP">GBP - Libra esterlina</ion-option>
+              <ion-option value="CAD">USD - Dólar Canadiense </ion-option>
+              <ion-option value="AUD">AUD - Dólar Australiano </ion-option>
+              <ion-option value="ARS">ARS - Peso Argentino </ion-option>
+              <ion-option value="MXN">MXN - Peso Mexicano </ion-option>
+            </ion-select>
+        </ion-item>
+
+        
+      </ion-list>
+      <div padding>
+        <button ion-button block type="submit" [disabled]="!myGroup.valid">Calcular</button>
       </div>
-    </button>
-  </ion-list>
-  <div *ngIf="selectedItem" padding>
-    You navigated here from <b>{{selectedItem.title}}</b>
-  </div>
+      <div id="showData" class="resultados_calculadora">
+        <ion-item>
+            <ion-label color="primary">{{resultado}}</ion-label>
+         </ion-item>
+         
+        </div>
+    </form>
+    <br>
+
+  </ion-content>
+
 </ion-content>

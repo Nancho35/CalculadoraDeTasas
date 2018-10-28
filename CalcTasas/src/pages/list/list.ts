@@ -17,7 +17,7 @@ export class ListPage {
     this.myGroup = this.createMyForm();
   }
 
-  Divisas(){
+  Divisas(){ 
     let loader = this.loadingController.create({
       content: 'Obteniendo Resultado...',
       duration: 8000
@@ -32,7 +32,10 @@ export class ListPage {
         let de = this.myGroup.value.cmbDE;
         let para = this.myGroup.value.cmbPara;
         let convert = (dinero/this.salida["rates"][de]);
-        this.resultado = dinero.toLocaleString('de-DE', { style: 'currency', currency: de })+" son : "+ (convert* this.salida["rates"][para]).toLocaleString('de-DE', { style: 'currency', currency: para });
+        console.log((convert* this.salida["rates"][para]));
+        console.log((convert* this.salida["rates"][para]).toFixed(4));
+
+        this.resultado = dinero.toLocaleString('de-DE', { style: 'currency', currency: de })+" son : "+ (convert* this.salida["rates"][para]).toLocaleString('de-DE', { style: 'currency', currency: para,minimumFractionDigits: 4 });
 
         loader.dismiss();
       });
@@ -43,7 +46,7 @@ export class ListPage {
 
   private createMyForm() {
     return this.formBuilder.group({
-      txtDinero: ['', Validators.required],
+      txtDinero: ['', Validators.compose([Validators.maxLength(30), Validators.pattern('[0-9]+(\.[0-9][0-9]?)?'), Validators.required])],
       cmbDE: ['', Validators.required],
       cmbPara: ['', Validators.required]
     });

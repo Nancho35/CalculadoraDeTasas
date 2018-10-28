@@ -5,6 +5,9 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
+import {AmortizacionPage} from '../pages/amortizacion/amortizacion';
+import {CapitalizacionPage} from '../pages/capitalizacion/capitalizacion';
+import {AcercaPage} from '../pages/acerca/acerca';
 
 @Component({
   templateUrl: 'app.html'
@@ -22,7 +25,10 @@ export class MyApp {
     // used for an example of ngFor and navigation
     this.pages = [
       { title: 'Conversión de tasas de interés', component: HomePage },
-      { title: 'Convertidor de divisas', component: ListPage }
+      { title: 'Convertidor de divisas', component: ListPage },
+      { title: 'Amortización', component: AmortizacionPage },
+      { title: 'Capitalización', component: CapitalizacionPage },
+      { title: 'Acerca...', component: AcercaPage }
     ];
 
   }

@@ -1,0 +1,59 @@
+<ion-header>
+    <ion-navbar>
+      <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+      <ion-title>Amortización</ion-title>
+    </ion-navbar>
+  </ion-header>
+
+
+<ion-content>
+  <form [formGroup]="FormAmortiza" (ngSubmit)="Amortiza()">
+    <ion-list>
+        <ion-item>
+            <div item-start>
+              <img src="assets/imgs/porcentaje.svg" alt="porcentaje" width="30px" height="30px">
+            </div>
+            <ion-label stacked>Tasa Efectiva {{periodo}} %:</ion-label>
+            <ion-input formControlName="txtTasa" type="tel" placeholder="Tasa"></ion-input>
+          </ion-item>
+      <ion-item>
+        <div item-start>
+          <img src="assets/imgs/entrada.svg" alt="entrada" width="30px" height="30px">
+        </div>
+
+        <ion-label stacked>Valor de la Obligación:</ion-label>
+        <ion-input formControlName="txtValor" type="tel" placeholder="Valor"></ion-input>
+      </ion-item>
+      <ion-item>
+        <div item-start>
+          <img src="assets/imgs/period.svg" alt="porcentaje" width="30px" height="30px">
+        </div>
+        <ion-label stacked>Periodo :</ion-label>
+        <ion-select formControlName="cmbPeriodicity" [(ngModel)]="cmbPeriodicity" (ionChange)="onSelectPeriod($event)">
+          <ion-option value="12">Mensual</ion-option>
+          <ion-option value="6">Bimestral</ion-option>
+          <ion-option value="4">Trimestral</ion-option>
+          <ion-option value="2">Semestral</ion-option>
+          <ion-option value="1">Anual</ion-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <div item-start>
+          <img src="assets/imgs/time.svg" alt="porcentaje" width="30px" height="30px">
+        </div>
+        <ion-label stacked>Plazo {{periodo}} :</ion-label>
+        <ion-input formControlName="txtPlazo" type="tel" pattern="[0-9]*" placeholder="Plazo"></ion-input>
+      </ion-item>
+    
+
+    </ion-list>
+    <div padding>
+      <button ion-button block type="submit" [disabled]="!FormAmortiza.valid">Calcular</button>
+    </div>
+    <div id="showData" class="resultados_calculadora">
+
+    </div>
+  </form>
+</ion-content>

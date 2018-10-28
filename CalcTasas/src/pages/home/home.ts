@@ -186,9 +186,11 @@ export class HomePage {
       '</tbody></table>';
   }
 
+  
+
   private createMyForm() {
     return this.formBuilder.group({
-      txtRate: ['', Validators.required],
+      txtRate: ['', Validators.compose([Validators.maxLength(30), Validators.pattern('[0-9]+(\.[0-9][0-9]?)?'), Validators.required])],
       cmbRateType: ['', Validators.required],
       cmbPeriodicity: ['', Validators.required],
       cmbPaymentType: ['', Validators.required],

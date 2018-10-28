@@ -9,6 +9,9 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { ScreenOrientation } from '@ionic-native/screen-orientation';
 import { RestDivisasProvider } from '../providers/rest-divisas/rest-divisas';
+import { AmortizacionPageModule}from '../pages/amortizacion/amortizacion.module';
+import { CapitalizacionPageModule}from '../pages/capitalizacion/capitalizacion.module';
+import {AcercaPageModule} from '../pages/acerca/acerca.module';
 @NgModule({
   declarations: [
     MyApp,
@@ -19,6 +22,9 @@ import { RestDivisasProvider } from '../providers/rest-divisas/rest-divisas';
     BrowserModule,
     IonicModule.forRoot(MyApp),
     HttpClientModule,
+    AmortizacionPageModule,
+    CapitalizacionPageModule,
+    AcercaPageModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
